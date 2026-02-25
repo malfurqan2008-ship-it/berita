@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Resmi Pemerintahan</title>
+    <style>
+      :root {
+        --green: #5aa12f;
+        --dark: #2a2a2a;
+        --text: #333;
+        --muted: #7a7a7a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background: #ececec;
+      }
+
+      .container {
+        width: min(1080px, 94%);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: var(--green);
+        color: #fff;
+      }
+
+      .topbar-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .brand p {
+        margin: 2px 0 0;
+        font-size: 13px;
+        opacity: 0.9;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        width: min(360px, 100%);
+        border-radius: 24px;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .search input {
+        flex: 1;
+        border: none;
+        padding: 11px 14px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .search button {
+        border: none;
+        background: #4f8f2a;
+        color: #fff;
+        padding: 11px 16px;
+        cursor: pointer;
+      }
+
+      .menu {
+        background: #1f1f1f;
+        border-bottom: 1px solid #444;
+      }
+
+      .menu ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .menu a {
+        display: block;
+        padding: 13px 14px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .menu a:hover {
+        background: #333;
+      }
+
+      .menu a.active {
+        background: #333;
+      }
+
+      .breadcrumb {
+        font-size: 12px;
+        color: var(--muted);
+        padding: 18px 0;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #ddd;
+      }
+
+      .main-news img {
+        width: 100%;
+        display: block;
+      }
+
+      .main-news-body {
+        padding: 18px;
+      }
+
+      .main-news h2 {
+        margin: 0 0 10px;
+        font-size: 24px;
+        line-height: 1.3;
+      }
+
+      .main-news p {
+        margin: 0 0 12px;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin: 8px 0 14px;
+      }
+
+      th,
+      td {
+        border: 1px solid #d8d8d8;
+        padding: 9px;
+      }
+
+      th {
+        background: #f5f5f5;
+        text-align: left;
+      }
+
+      .sidebar h3 {
+        margin: 0 0 14px;
+        font-size: 36px;
+        font-weight: 500;
+      }
+
+      .news-item {
+        margin-bottom: 16px;
+      }
+
+      .news-item img {
+        width: 100%;
+        display: block;
+      }
+
+      .news-item h4 {
+        margin: 9px 0 6px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .news-item p {
+        margin: 0;
+        color: #666;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar-wrap {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .search {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="topbar">
+        <div class="container topbar-wrap">
+          <div class="brand">
+            <div class="brand-icon">&#127970;</div>
+            <div>
+              <h1>Website Resmi Pemerintahan</h1>
+              <p>Kabupaten Aceh Timur</p>
+            </div>
+          </div>
+          <form class="search">
+            <input type="text" placeholder="Ketik untuk mencari..." />
+            <button type="button">&#128269;</button>
+          </form>
+        </div>
+      </div>
+      <nav class="menu">
+        <div class="container">
+          <ul>
+            <li><a href="#" class="active" data-menu="beranda" onclick="setMenu('beranda', this); return false;">Beranda</a></li>
+            <li><a href="#" data-menu="profil" onclick="setMenu('profil', this); return false;">Profil</a></li>
+            <li><a href="#" data-menu="berita" onclick="setMenu('berita', this); return false;">Berita</a></li>
+            <li><a href="#" data-menu="galeri" onclick="setMenu('galeri', this); return false;">Galeri</a></li>
+            <li><a href="#" data-menu="ppid" onclick="setMenu('ppid', this); return false;">PPID</a></li>
+            <li><a href="#" data-menu="informasi-publik" onclick="setMenu('informasi-publik', this); return false;">Informasi Publik</a></li>
+            <li><a href="#" data-menu="kontak" onclick="setMenu('kontak', this); return false;">Kontak</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="breadcrumb" id="breadcrumbTrail">
+        BERANDA / BERITA / KATEGORI / BERITA PEMERINTAHAN / ACEH TIMUR KEJAR
+        PERCEPATAN PEMBANGUNAN HUNTARA
+      </div>
+
+      <div class="layout">
+        <article class="card main-news">
+          <img
+            id="mainImage"
+            src="https://imgs.search.brave.com/PFKcgnhYjLuCCtgJK_mo_NOT2swTUgecAaFJH-zvPtQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pY2hl/Zi5iYmNpLmNvLnVr/L2FjZS93cy82NjAv/Y3BzcHJvZHBiLzhj/NmQvbGl2ZS9mMDc4/ODBlMC1kMDIyLTEx/ZjAtOWZiNS01ZjNh/MzcwM2EzNjUuanBn/LndlYnA"
+            alt="Berita utama"
+          />
+          <div class="main-news-body">
+            <h2 id="mainTitle">Banjir dan Longsor Sumatera</h2>
+            <p id="mainLead">
+              Serangkaian bencana hidrometeorologi berupa banjir bandang, luapan
+              sungai, dan tanah longsor menerjang wilayah utara dan tengah Pulau
+              Sumatra pada akhir November 2025. Bencana ini berdampak pada Aceh,
+              Sumatera Utara, dan Sumatera Barat.
+            </p>
+            <p id="mainBody">
+              Para ahli menilai tingkat kehancuran yang masif dipicu kombinasi
+              cuaca ekstrem dan kerentanan ekologis akibat degradasi hutan di
+              wilayah hulu.
+            </p>
+
+            <table id="mainTable">
+              <tr>
+                <th>Provinsi</th>
+                <th>Tewas</th>
+                <th>Luka</th>
+                <th>Hilang</th>
+              </tr>
+              <tr>
+                <td>Aceh</td>
+                <td>562</td>
+                <td>5.359</td>
+                <td>29</td>
+              </tr>
+              <tr>
+                <td>Sumatera Barat</td>
+                <td>375</td>
+                <td>2.300</td>
+                <td>41</td>
+              </tr>
+              <tr>
+                <td>Sumatera Utara</td>
+                <td>267</td>
+                <td>382</td>
+                <td>70</td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <th>1.204</th>
+                <th>8.041</th>
+                <th>140</th>
+              </tr>
+            </table>
+
+            <p id="mainFooter">
+              Menurut pembaruan data resmi, bencana diperkirakan berdampak
+              langsung pada lebih dari 3,3 juta jiwa penduduk dan merusak
+              fasilitas umum, kesehatan, pendidikan, rumah ibadah, kantor, dan
+              jembatan.
+            </p>
+          </div>
+        </article>
+
+        <aside class="sidebar">
+          <h3>Berita Terkini</h3>
+          <div class="news-item card">
+            <img
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=700&q=80"
+              alt="Berita terkini 1"
+            />
+            <div style="padding: 10px">
+              <h4>
+                Bupati Al-Farlaky Kunker ke Simpang Jernih, Tinjau Jembatan
+                Gantung dan Progres Huntara
+              </h4>
+              <p>Aceh Timur, Selasa, 24 Februari 2026</p>
+            </div>
+          </div>
+          <div class="news-item card">
+            <div style="padding: 10px">
+              <h4>
+                Bupati Al-Farlaky Melayat ke Istri Almarhum Ulama Aceh Abu Daud
+                Lueng Angen
+              </h4>
+              <p>Senin, 23 Februari 2026</p>
+            </div>
+          </div>
+          <div class="news-item card">
+            <div style="padding: 10px">
+              <h4>
+                Pemkab Aceh Timur Percepat Pembangunan Infrastruktur Pascabencana
+              </h4>
+              <p>Minggu, 22 Februari 2026</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <script>
+      const menuContent = {
+        beranda: {
+          breadcrumb: "BERANDA / INFORMASI UTAMA",
+          title: "Selamat Datang di Portal Pemerintah Aceh Timur",
+          lead: "Website ini menyediakan informasi terkini seputar pelayanan publik, agenda pemerintahan, dan berita daerah.",
+          body: "Masyarakat dapat mengakses pengumuman resmi, jadwal kegiatan, serta informasi penting lainnya secara mudah.",
+          footer: "Terima kasih telah menggunakan portal informasi resmi Kabupaten Aceh Timur.",
+          showTable: false,
+        },
+        profil: {
+          breadcrumb: "BERANDA / PROFIL",
+          title: "Profil Singkat Kabupaten Aceh Timur",
+          lead: "Kabupaten Aceh Timur memiliki potensi besar di bidang pertanian, perikanan, dan pengembangan sumber daya manusia.",
+          body: "Pemerintah daerah terus mendorong pembangunan yang merata agar seluruh kecamatan mendapatkan layanan terbaik.",
+          footer: "Profil lengkap daerah dapat diperbarui secara berkala melalui laman resmi ini.",
+          showTable: false,
+        },
+        berita: {
+          breadcrumb: "BERANDA / BERITA",
+          title: "Banjir dan Longsor Sumatera",
+          lead: "Serangkaian bencana hidrometeorologi berupa banjir bandang, luapan sungai, dan tanah longsor menerjang wilayah utara dan tengah Pulau Sumatra.",
+          body: "Bencana ini berdampak pada Aceh, Sumatera Utara, dan Sumatera Barat. Curah hujan ekstrem memperparah kondisi wilayah terdampak.",
+          footer: "Pemerintah terus menyalurkan bantuan dan mempercepat penanganan darurat untuk warga terdampak.",
+          showTable: true,
+        },
+        galeri: {
+          breadcrumb: "BERANDA / GALERI",
+          title: "Galeri Kegiatan Pemerintah",
+          lead: "Dokumentasi kegiatan resmi pemerintah tersedia dalam bentuk foto dan video untuk publik.",
+          body: "Galeri menampilkan momen kunjungan kerja, peresmian fasilitas, hingga kegiatan sosial kemasyarakatan.",
+          footer: "Konten galeri akan terus ditambahkan secara berkala.",
+          showTable: false,
+        },
+        ppid: {
+          breadcrumb: "BERANDA / PPID",
+          title: "Layanan PPID Kabupaten Aceh Timur",
+          lead: "PPID hadir untuk memberikan akses informasi publik secara cepat, tepat, dan sederhana.",
+          body: "Masyarakat dapat mengajukan permohonan informasi sesuai prosedur yang berlaku melalui layanan ini.",
+          footer: "Silakan hubungi petugas PPID untuk bantuan lebih lanjut.",
+          showTable: false,
+        },
+        "informasi-publik": {
+          breadcrumb: "BERANDA / INFORMASI PUBLIK",
+          title: "Informasi Publik Terkini",
+          lead: "Bagian ini berisi pengumuman resmi, kebijakan baru, serta agenda kegiatan pemerintah daerah.",
+          body: "Kami berkomitmen menjaga keterbukaan informasi agar masyarakat mendapatkan informasi yang valid.",
+          footer: "Informasi diperbarui secara berkala sesuai data resmi pemerintah.",
+          showTable: false,
+        },
+        kontak: {
+          breadcrumb: "BERANDA / KONTAK",
+          title: "Kontak Layanan Pemerintah",
+          lead: "Untuk pertanyaan dan pengaduan, masyarakat dapat menghubungi layanan resmi pemerintah Kabupaten Aceh Timur.",
+          body: "Kami siap membantu melalui kanal telepon, email, atau kunjungan langsung ke kantor pelayanan.",
+          footer: "Jam layanan: Senin - Jumat, pukul 08.00 - 16.00 WIB.",
+          showTable: false,
+        },
+      };
+
+      function setMenu(menuKey, el) {
+        const data = menuContent[menuKey];
+        if (!data) return;
+
+        document.getElementById("breadcrumbTrail").textContent = data.breadcrumb;
+        document.getElementById("mainTitle").textContent = data.title;
+        document.getElementById("mainLead").textContent = data.lead;
+        document.getElementById("mainBody").textContent = data.body;
+        document.getElementById("mainFooter").textContent = data.footer;
+        document.getElementById("mainTable").style.display = data.showTable ? "table" : "none";
+
+        document.querySelectorAll(".menu a").forEach((a) => a.classList.remove("active"));
+        if (el) el.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
